@@ -29,7 +29,9 @@ $(document).ready( function () {
   //view patient id
   $("#viewInfo").click(async function(){
 
-    var pid = await instance.methods.getPatientId().call();
+    var pid = await instance.methods.getPatientId().call( (error)=>{
+        console.log(error);
+    });
     console.log("Patient Id", pid);
     document.getElementById('patientInfo').innerHTML= pid;
 

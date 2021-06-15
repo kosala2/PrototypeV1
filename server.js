@@ -1,6 +1,7 @@
 //  import PatientControl from '../build/contracts/PatientControl.json';
 
     var provider = 'http://40.121.85.175:8000';
+   // var provider="http://127.0.0.1:7545";
     var web3Provider = new Web3.providers.HttpProvider(provider);
     var web3 = new Web3(web3Provider);
 
@@ -13,7 +14,8 @@
     var instance;
 
 
-    var contractAddress ='0x60EA1490068bd78483173A642b7EA4eFdEA8C00a';
+    var contractAddress ='0x723142e14A15e9d83C9323F44A3Bf760eb8020D6'; 
+   // var contractAddress = '0x028a515Aaa29F619EF3E0a982B5E0C4c8637447e';
     var contractABI;
 
     //read abi from rest call
