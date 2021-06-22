@@ -31,12 +31,12 @@ $(document).ready( function () {
 
       console.log("reading patient records");
 
-      await instance.methods.getPatientId().call({from: '0xC42c43502b494c6c49170229a4E92b261413fc53'}, 
-          function(error, result){
-            console.log(result);
-            document.getElementById('patientInfo').innerHTML= result;
-         }
-      );
+      // await instance.methods.getPatientId().call({from: '0xC42c43502b494c6c49170229a4E92b261413fc53'}, 
+      //     function(error, result){
+      //       console.log(result);
+      //       document.getElementById('patientInfo').innerHTML= result;
+      //    }
+      // );
       //console.log("Patient Id", pid);
       
 
@@ -54,27 +54,27 @@ $(document).ready( function () {
       // })
       // .on('error', console.error);
 
-      // instance.getPastEvents('eventCreatePatient',
-      //                 {
-      //                   fromBlock:0,
-      //                   toBlock:'latest'
-      //                 },
-      //                 (error,events)=>{
-      //                   if(error){
-      //                     console.log(error);
-      //                   }
-      //                    let len=events.length;
-      //                    console.log(len);
+      instance.getPastEvents('eventCreatePatient',
+                      {
+                        fromBlock:0,
+                        toBlock:'latest'
+                      },
+                      (error,events)=>{
+                        if(error){
+                          console.log(error);
+                        }
+                         let len=events.length;
+                         console.log(len);
 
-      //                    for(let i=len-1; i>=0;i--){
-      //                       var tmp=events[i];
-      //                       var tid=tmp.returnValues['id'];
-      //                       var tstp=tmp.returnValues['timestamp'];
-      //                       var str = id +" : "+ tstp;
-      //                       document.getElementById('patientInfo').innerHTML+=str+"<br>";
-      //                    }
-      //                 }
-      //           );
+                         for(let i=len-1; i>=0;i--){
+                            var tmp=events[i];
+                            var tid=tmp.returnValues['id'];
+                            var tstp=tmp.returnValues['timestamp'];
+                            var str = tid +" : "+ tstp;
+                            document.getElementById('patientInfo').innerHTML+=str+"<br>";
+                         }
+                      }
+                );
 
   });
 

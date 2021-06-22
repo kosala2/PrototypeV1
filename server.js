@@ -14,8 +14,8 @@
     var instance;
 
 
-    var contractAddress ='0x1028296e9D85761f93f200A9B106Eabeb02CF839'; 
-   // var contractAddress = '0x028a515Aaa29F619EF3E0a982B5E0C4c8637447e';
+    //var contractAddress ='0x1028296e9D85761f93f200A9B106Eabeb02CF839'; 
+    var contractAddress = '0x23B486376459D831aBB6542C579EBe8916Cf536c';
     var contractABI;
 
     //read abi from rest call
