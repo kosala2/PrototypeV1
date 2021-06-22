@@ -17,14 +17,16 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
-
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const Web3 = require('web3');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const developmentMnemonic = "lab option output please broken analyst club trust notice silk approve submit";
 // const infuraKey = "fj4jll3k.....";
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
 module.exports = {
+
   /**
    * Networks define how you connect to your ethereum client and let you set the
    * defaults web3 uses to send transactions. If you don't specify one truffle
@@ -36,6 +38,12 @@ module.exports = {
    */
 
   networks: {
+
+    rpc:{
+      host:"40.121.85.175",
+      port:8000
+    },
+
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
     // You should run a client (like ganache-cli, geth or parity) in a separate terminal
@@ -45,7 +53,7 @@ module.exports = {
     development: {
      host: "40.121.85.175",     // Localhost (default: none)
      port: 8000,            // Standard Ethereum port (default: none)
-     network_id: "15",       // Any network (default: none)
+     network_id: "15"      // Any network (default: none)
     },
     // development: {
     //  host: "127.0.0.1",     // Localhost (default: none)
@@ -73,9 +81,10 @@ module.exports = {
     // },
     // Useful for private networks
     // private: {
-    // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
-    // network_id: 2111,   // This network is yours, in the cloud.
-    // production: true    // Treats this network as if it was a public net. (default: false)
+    //     provider: () => new HDWalletProvider(developmentMnemonic,"http://40.121.85.175:8000"),
+    //     from:"0x2889392d845baa82802532d627558bee86653de8",
+    //     network_id: 15  // This network is yours, in the cloud.
+    //   //  production: true    // Treats this network as if it was a public net. (default: false)
     // }
   },
 
@@ -87,15 +96,15 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-        version: "0.8.3",    // Fetch exact version from solc-bin (default: truffle's version)
-      // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
-      // settings: {          // See the solidity docs for advice about optimization and evmVersion
-       optimizer: {
-         enabled: false,
-         runs: 200
-       },
-      //  evmVersion: "byzantium"
-      // }
+      version: "0.8.5",    // Fetch exact version from solc-bin (default: truffle's version)
+    //docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
+      settings: {          // See the solidity docs for advice about optimization and evmVersion
+         optimizer: {
+           enabled: false,
+           runs: 200
+         },
+         evmVersion: "byzantium"
+      }
     }
   },
 
