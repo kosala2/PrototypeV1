@@ -32,11 +32,12 @@ $(document).ready( async function () {
    //writing to blockchain and ipfs
     $("#addInfo").click( function(){
 
-        console.log("Adding Patient Info to blockchain");
+        console.log("Adding Doctor Info to blockchain");
 
         var _name = $("#_name").val();
         var _email = $("#_email").val();
         var _mobile = $("#_mobile").val();
+        var _hospitalName = $('#_hospitalName').val();
 
         // //writing to blockchain
         // instance.methods.writePatientDetails(_name,_email,_mobile).send({
@@ -52,7 +53,8 @@ $(document).ready( async function () {
         var userDetails = JSON.stringify({
           "name": _name,
           "email":_email,
-          "mobile":_mobile
+          "mobile":_mobile,
+          "hospitalName":_hospitalName
         });
 
         //write User data to IPFS
@@ -67,7 +69,7 @@ $(document).ready( async function () {
                 if(_hash.status==="error"){
                     console.log(_hash);
                 }
-console.log("here")
+
                   console.log("write Json to IPFS:"+_hash);
                     var _uri="https://gateway.ipfs.io/ipfs/"+_hash;
                   //var _uri="http://40.121.85.175:8080/ipfs/"+_hash; //node 1
@@ -76,13 +78,13 @@ console.log("here")
 
   
                   //adding _hash to blockchain
-                  await instance.methods.writePatientInfo(userAccount,_hash).send({
+                  await instance.methods.writeDoctorInfo(userAccount,_hash).send({
                     from: userAccount,
                     gas:450000,
                     gasPrice:'125000000000'
                   })
                   .then(function(tx){
-                    console.log("write patient info hash to blockchain:",tx);
+                    console.log("write doctor info hash to blockchain:",tx);
                   });
 
 
@@ -100,12 +102,12 @@ console.log("here")
     //view patient id
     $("#viewInfo").click(async function(){
 
-        console.log("reading patient records");
+        console.log("reading doctor records");
 
-        var result= await instance.methods.getPatientInfo(userAccount).call();
+        var result= await instance.methods.getDoctorInfo(userAccount).call();
         //var _uri="http://40.121.85.175:8080/ipfs/"+result;
         var _uri = "https://ipfs.infura.io/ipfs/" + result;
-        document.getElementById('patientInfo').innerHTML= _uri;
+        document.getElementById('doctorInfo').innerHTML= _uri;
 
     });
 
