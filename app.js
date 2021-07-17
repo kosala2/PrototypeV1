@@ -6,8 +6,8 @@ var fs=require('fs')
 
 //infura provides ipfs api to write to global IPFS network
 //that can be accessed as https://gateway.ipfs.io/ipfs/<hashOfFile>
-//const ipfs = new IPFS({host:'ipfs.infura.io', port:5001, protocol:'https'});
-const ipfs = new IPFS({host:'40.121.85.175', port:5001, protocol:'http'});
+const ipfs = new IPFS({host:'ipfs.infura.io', port:5001, protocol:'https'});
+//const ipfs = new IPFS({host:'40.121.85.175', port:5001, protocol:'http'});
 var path = require('path');
 
 const app = express();
@@ -24,10 +24,14 @@ app.get('/patient', function(req, res) {
 });
 
 
+app.get('/doctor', function(req, res) {
+    res.sendFile(path.join(__dirname + '/doctor.html'));
+});
+
 
 //read abi
 app.get('/abi', function(req,res){
-	var contract_json = "../WHZHealth/build/contracts/PatientControl.json";
+	var contract_json = "./build/contracts/PatientControl.json";
 	var parsed= JSON.parse(fs.readFileSync(contract_json));
 	var abi = parsed.abi;
 	res.send(abi);

@@ -8,6 +8,15 @@ contract PatientControl{
     string private mobile;
 
     mapping(address=>string) private users;
+
+
+    string private dname;
+    string private demail;
+    string private dmobile;
+    string private dhospitalname;
+
+    mapping(address=>string) private doctors;
+
     
     event eventCreatePatient(
         string name,
@@ -15,6 +24,15 @@ contract PatientControl{
         string mobile,
         uint256 timestamp
     );
+
+    event eventCreateDoctor(
+        string dname,
+        string demail,
+        string dmobile,
+        string dhospitalname,
+        uint256 timestamp
+    );
+
     
     function writePatientDetails(string memory _name, string memory _email, string memory _mobile)public{
         name=_name;
@@ -43,4 +61,40 @@ contract PatientControl{
     function getPatientMobile()public view returns(string memory){
         return mobile;
     }
+
+
+   function writeDoctorDetails(string memory _dname, string memory _demail, string memory _dmobile, string memory _dhospitalname)public{
+        dname=_dname;
+        demail=_demail;
+        dmobile=_dmobile;
+        dhospitalname = _dhospitalname;
+        emit eventCreateDoctor(dname,demail,dmobile,dhospitalname,block.timestamp);
+    }
+
+    function writeDoctorInfo(address _address, string memory _hash)public{
+        doctors[_address]=_hash;
+    }
+
+    function getDoctorInfo(address _address)public view returns(string memory){
+        return doctors[_address];
+    }
+
+
+    function getDoctorName()public view returns(string memory){
+        return dname;
+    }
+
+    function getDoctorEmail()public view returns(string memory){
+        return demail;
+    }
+
+    function getDoctorMobile()public view returns(string memory){
+        return dmobile;
+    }
+   
+     function getDoctorHospitalName()public view returns(string memory){
+        return dhospitalname;
+    }
+
+
 }

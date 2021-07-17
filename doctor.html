@@ -1,0 +1,76 @@
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <!--    <script type="text/javascript" src="/node_modules/web3/dist/web3.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+<!--     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/server.js"></script>
+    <script type="text/javascript" src="/doctor.js"></script>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+
+    <title> Doctor Information on Blockchain</title>
+  </head>
+
+  <body>
+
+      <br><br>
+
+      <div class="container">
+        <h2> Doctor Registration on Blockchain</h2>
+        <br>
+            <table>
+
+              <tr>
+                  <td> <label class="label label-default" for="asset">Doctor Name:</label> </td>
+                  <td> <input type="text" class="form-control" id="_name" placeholder="Enter Doctor Name"> </td>
+              </tr>
+
+              <tr>
+                  <td> <label class="label label-default" for="asset">Email Address:</label> </td>
+                  <td> <input type="text" class="form-control" id="_email" placeholder="Enter Email Address"> </td>
+              </tr>
+
+              <tr>
+                  <td> <label class="label label-default" for="asset">Mobile Number:</label> </td>
+                  <td> <input type="text" class="form-control" id="_mobile" placeholder="Enter Mobile Number"> </td>
+              </tr>
+
+	     <tr>
+                  <td> <label class="label label-default" for="asset">Hospital Name:</label> </td>
+                  <td> <input type="text" class="form-control" id="_hospitalName" placeholder="Enter Hospital Name"> </td>
+              </tr>
+
+            </table>
+
+            
+
+            <br><br>
+            <table >
+              <tr> 
+                <td><button type="submit" id="addInfo" class="btn btn-primary">Add Info</button></td>
+                <td><button type="submit" id="addCredit" class="btn btn-primary">Get Free Credit</button></td>
+              </tr>
+            </table>
+
+
+            <br><br>
+            <table >
+              <tr> 
+                  <td> <button type="button" id="viewInfo"  class="btn btn-primary">View Doctor Info </button></td>
+              </tr>
+            </table>
+
+
+            <br><br>
+            <div id="doctorInfo">
+            </div>
+
+      </div>
+
+  </body>
+
+
+</html>
